@@ -4,7 +4,7 @@ include('db.php');
 session_start();
 if(!isset($_SESSION['admin']) || !$_SESSION['admin']) die('Доступ запрещен. Только для администратора.');
 include 'header.php';
-// Параметры фильтрации и сортировки
+//  Параметры фильтрации и сортировки
 $status_filter = isset($_GET['status']) ? $_GET['status'] : '';
 $sort_by = isset($_GET['sort']) ? $_GET['sort'] : 'id';
 $sort_order = isset($_GET['order']) && $_GET['order'] == 'desc' ? 'DESC' : 'ASC';
@@ -12,7 +12,7 @@ $page = isset($_GET['page']) ? (int)$_GET['page'] : 1;
 $per_page = 5;
 $offset = ($page - 1) * $per_page;
 
-// Обновление статуса
+//  Обновление статуса
 if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['request_id'])) {
     $status = mysqli_real_escape_string($con, $_POST['status']);
     $id = (int)$_POST['request_id'];
@@ -21,18 +21,18 @@ if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['request_id'])) {
     exit;
 }
 
-// Построение WHERE для фильтра
+//  Построение WHERE для фильтра
 $where = "";
 if($status_filter) {
     $where = "WHERE request.status='$status_filter'";
 }
 
-// Подсчет общего количества
+//  Подсчет общего количества
 $count_query = $con->query("SELECT COUNT(*) as cnt FROM request INNER JOIN users ON request.user_id = users.id $where");
 $total = $count_query->fetch_assoc()['cnt'];
 $total_pages = ceil($total / $per_page);
 
-// Основной запрос с сортировкой и пагинацией
+//  Основной запрос с сортировкой и пагинацией
 $query = $con->query("SELECT request.*, users.login, users.fullname FROM request INNER JOIN users ON request.user_id = users.id $where ORDER BY $sort_by $sort_order LIMIT $offset, $per_page");
 if(!$query) die('query error: ' . $con->error);
 
