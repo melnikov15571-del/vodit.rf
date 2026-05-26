@@ -1,0 +1,160 @@
+.slideshow-container {
+    margin: 40px auto 0 auto;
+    position: relative;
+    width: 90%;
+    max-width: 1000px;
+    height: auto;
+    aspect-ratio: 1000/550; /* Сохраняем пропорции */
+    overflow: hidden;
+}
+.slideshow-container img {
+    align-items: center;
+}
+.mySlides {
+    display: none;
+}
+.mySlides:first-child {
+    display: block;
+}
+.mySlides img {
+    width: 100%;
+    height: auto;
+    vertical-align: middle;
+    object-fit: cover;
+}
+/* Навигационные кнопки */
+.prev, .next {
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    width: auto;
+    margin-top: -22px;
+    padding: 12px 16px;
+    color: white;
+    font-weight: bold;
+    font-size: 16px;
+    transition: 0.6s ease;
+    border-radius: 0 3px 3px 0;
+    user-select: none;
+    background-color: rgba(0,0,0,0.3);
+    z-index: 10;
+}
+.next {
+    right: 0;
+    border-radius: 3px 0 0 3px;
+}
+.prev:hover, .next:hover {
+    background-color: rgba(0,0,0,0.8);
+}
+/* Текст слайда */
+.text {
+    color: #f2f2f2;
+    font-size: 15px;
+    padding: 8px 12px;
+    position: absolute;
+    bottom: 8px;
+    width: 100%;
+    text-align: center;
+    background-color: rgba(0,0,0,0.5);
+    z-index: 10;
+}
+/* Контейнер точек */
+.dot-container {
+    text-align: center;
+    padding: 20px 0;
+}
+.dot {
+    cursor: pointer;
+    height: 12px;
+    width: 12px;
+    margin: 0 5px;
+    background-color: #bbb;
+    border-radius: 50%;
+    display: inline-block;
+    transition: background-color 0.6s ease;
+}
+.active, .dot:hover {
+    background-color: #717171;
+}
+.fade {
+    animation-name: fade;
+    animation-duration: 0.5s;
+}
+@keyframes fade {
+    from { opacity: .6; }
+    to { opacity: 1; }
+}
+/* Медиа-запросы для адаптации */
+@media screen and (max-width: 1200px) {
+    .slideshow-container {
+        max-width: 900px;
+    }
+}
+@media screen and (max-width: 992px) {
+    .slideshow-container {
+        max-width: 700px;
+        margin: 30px auto 0 auto;
+    } 
+    .prev, .next {
+        padding: 10px 14px;
+        font-size: 14px;
+    }
+}
+@media screen and (max-width: 768px) {
+    .slideshow-container {
+        max-width: 500px;
+        margin: 20px auto 0 auto;
+    } 
+    .prev, .next {
+        padding: 8px 12px;
+        font-size: 12px;
+        margin-top: -18px;
+    } 
+    .text {
+        font-size: 13px;
+        padding: 6px 10px;
+        bottom: 6px;
+    }  
+    .dot {
+        height: 10px;
+        width: 10px;
+        margin: 0 4px;
+    }
+}
+@media screen and (max-width: 576px) {
+    .slideshow-container {
+        width: 95%;
+        max-width: 400px;
+        margin: 15px auto 0 auto;
+    }   
+    .prev, .next {
+        padding: 6px 10px;
+        font-size: 11px;
+        margin-top: -16px;
+    }   
+    .text {
+        font-size: 12px;
+        padding: 4px 8px;
+        bottom: 4px;
+    }   
+    .dot-container {
+        padding: 15px 0;
+    }   
+    .dot {
+        height: 8px;
+        width: 8px;
+        margin: 0 3px;
+    }
+}
+@media screen and (max-width: 400px) {
+    .slideshow-container {
+        margin: 10px auto 0 auto;
+    }  
+    .prev, .next {
+        padding: 4px 8px;
+        font-size: 10px;
+    }   
+    .text {
+        font-size: 11px;
+    }
+}
