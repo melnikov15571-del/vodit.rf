@@ -48,9 +48,9 @@ include 'header.php';
 
             <label>Способ оплаты</label>
             <select required name="payment">
-                <option value="Предоплата qr">Предоплата по QR-коду</option>
-                <option value="Оплата картой">Оплата картой МИР</option>
-                <option value="Постоплата">Постоплата в офисе организации</option>
+                <option value="Предоплата QR-коду">Предоплата по QR-коду</option>
+                <option value="Оплата картой МИР">Оплата картой МИР</option>
+                <option value="Постоплата в офисе организации">Постоплата в офисе организации</option>
             </select>
             <button class="btn-sub">Отправить</button>
         </form>
